@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package meeting;
+
+service MeetingService {
+  rpc MeetingStream (SubscriptionRequest) returns (stream MeetingInfo) {}
+}
+
+message SubscriptionRequest {
+  string city = 1;
+}
+
+message MeetingInfo {
+   string city = 1;
+   int32 free_places = 2;
+   repeated string participants = 3;
+}
